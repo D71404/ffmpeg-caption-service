@@ -86,7 +86,7 @@ app.post('/caption', authenticateApiKey, async (req, res) => {
       // Calculate position based on aspect ratio
       const yPosition = aspectRatio === '9:16' ? 'h*0.75' : 'h*0.85';
 
-      return `drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='${escapedText}':fontcolor=white:fontsize=48:borderw=3:bordercolor=black:x=(w-text_w)/2:y=${yPosition}:enable='between(t,${start},${end})'`;
+      return `drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text=${escapedText}:fontcolor=white:fontsize=48:borderw=3:bordercolor=black:x=(w-text_w)/2:y=${yPosition}:enable='between(t,${start},${end})'`;
     });
 
     const filterComplex = drawTextFilters.join(',');
