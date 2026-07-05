@@ -94,6 +94,12 @@ app.post('/caption', authenticateApiKey, async (req, res) => {
     console.log(`[${jobId}] Processing ${captions.length} captions`);
     console.log(`[${jobId}] Filter string: ${filterComplex}`);
 
+    // Log the complete filter string without truncation
+    console.log('=== FULL FILTER STRING START ===');
+    console.log('FULL FILTER STRING:', filterComplex);
+    console.log('FULL FILTER STRING LENGTH:', filterComplex.length);
+    console.log('=== FULL FILTER STRING END ===');
+
     // Process video with ffmpeg
     await new Promise((resolve, reject) => {
       const command = ffmpeg(inputPath)
