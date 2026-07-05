@@ -4,7 +4,14 @@ FROM node:18-bullseye
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     fonts-dejavu-core \
+    fontconfig \
     && rm -rf /var/lib/apt/lists/*
+
+# Verify the font file exists at the expected path
+RUN echo "Verifying DejaVu Sans Bold font installation..." \
+    && ls -lh /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf \
+    && fc-list | grep -i "dejavu.*bold" \
+    && echo "Font verification complete!"
 
 # Create app directory
 WORKDIR /usr/src/app

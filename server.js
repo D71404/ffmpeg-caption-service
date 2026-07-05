@@ -92,6 +92,7 @@ app.post('/caption', authenticateApiKey, async (req, res) => {
     const filterComplex = drawTextFilters.join(',');
 
     console.log(`[${jobId}] Processing ${captions.length} captions`);
+    console.log(`[${jobId}] Filter string: ${filterComplex}`);
 
     // Process video with ffmpeg
     await new Promise((resolve, reject) => {
